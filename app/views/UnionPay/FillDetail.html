@@ -1,0 +1,55 @@
+<section>
+    <div>
+        <form>
+            <div>
+                <label>{{UnionPayRule.creditcarddisplay}}</label>
+                <input type="text" placeholder="借记卡/贷记卡" ng-model="UnionPayInfo.creditcardno" readonly>
+            </div>
+            <div ng-show="UnionPayRule.mobile">
+                <label> 手机号码 </label>
+                <input type="text" placeholder="请输入手机号码" ng-model="UnionPayInfo.mobile">
+            </div>
+            <div ng-show="UnionPayRule.smsCode">
+                <label> 验证码 </label>
+                <input type="text" placeholder="请输入短信验证码" ng-model="UnionPayInfo.smscode" ng-disabled="disablesmscode">
+                <button ng-click="SendSmsCode()" ng-disabled="!UnionPayInfo.mobile">获取短信验证码</button>
+            </div>
+            <div ng-show="UnionPayRule.password">
+                <label> 密码 </label>
+                <input type="text" placeholder="请输入取款密码" ng-model="UnionPayInfo.password">
+            </div>
+            <div ng-show="UnionPayRule.cvn2">
+                <label> CVN2 </label>
+                <input type="text" placeholder="卡背面末三位" ng-model="UnionPayInfo.cvn2">
+            </div>
+            <div ng-show="UnionPayRule.expire">
+                <label> 有效期 </label>
+                <input type="text" placeholder="示例：09/15，输入0915" ng-model="UnionPayInfo.expire">
+            </div>
+            <div ng-show="UnionPayRule.credentialtype">
+                <label> 证件类型 </label>
+                <select ng-model="UnionPayInfo.credentialtype">
+                    <option value="01">身份证</option>
+                    <!--option value="02">军官证</option>央行银联认证只支持身份证
+                    <option value="03">护照</option>
+                    <option value="04">回乡证</option>
+                    <option value="05">台胞证</option>
+                    <option value="06">警官证</option>
+                    <option value="07">士兵证</option-->
+                </select>
+            </div>
+            <div ng-show="UnionPayRule.credential">
+                <label> 证件号 </label>
+                <input type="text" placeholder="请输入证件号" ng-model="UnionPayInfo.credential">
+            </div>
+            <div ng-show="UnionPayRule.name">
+                <label> 姓名 </label>
+                <input type="text" placeholder="请输入姓名" ng-model="UnionPayInfo.name">
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <button ng-click="Submit()" ng-disabled="UnionPayRule.submit"> 提交 </button>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+<section>
+    <div ng-init="getVerifyCode('init')">
+        <form >
+            <div>
+                <label> 姓名 </label>
+                <input type="text" placeholder="请输入姓名" ng-model="PbccrcUserInfo.name">
+            </div>
+
+            <div>
+                <label> 身份证号 </label>
+                <input type="text" placeholder="请输入身份证号" ng-model="PbccrcUserInfo.certno">
+            </div>
+
+            <div>
+                <label> 验证码 </label>
+                <input type="text" placeholder="请输入验证码" ng-model="PbccrcUserInfo.vercode" ng-disabled="!PbccrcUserInfo.vercodebase64">
+                <div ng-click="getVerifyCode('hand')"><img ng-src="{{PbccrcUserInfo.vercodebase64}}"></div>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <button ng-click="checkCertInfo()" ng-disabled="!(PbccrcUserInfo.name && PbccrcUserInfo.certno && PbccrcUserInfo.vercode)">下一步</button>
+    </div>
+</section>

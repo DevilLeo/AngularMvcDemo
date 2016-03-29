@@ -1,0 +1,35 @@
+<section>
+    <div ng-init="QuestionInit()">
+        <div  ng-if="results.length>0">
+            <div ng-repeat="result in results|orderBy:$index ">
+                    <p>
+                        <span>问题{{$index+1}}：</span>
+                        <span>{{::result.question}}</span>
+                    </p>
+                <p>
+                    <input type="radio" name="{{$index+1}}" ng-click="selectOption($index,1)">
+                    <span>{{::result.options1}}</span>
+                </p>
+                <p>
+                    <input type="radio" name="{{$index+1}}" ng-click="selectOption($index,2)">
+                    <span>{{::result.options2}}</span>
+                </p>
+                <p>
+                    <input type="radio" name="{{$index+1}}"  ng-click="selectOption($index,3)">
+                    <span>{{::result.options3}}</span>
+                </p>
+                <p>
+                    <input type="radio" name="{{$index+1}}"  ng-click="selectOption($index,4)">
+                    <span>{{::result.options4}}</span>
+                </p>
+                <p>
+                    <input type="radio" name="{{$index+1}}"  ng-click="selectOption($index,5)">
+                    <span>{{::result.options5}}</span>
+                </p>
+            </div>
+            <div>
+                <button ng-click="SubmitAnswer()">提交</button>
+            </div>
+        </div>
+    </div>
+</section>

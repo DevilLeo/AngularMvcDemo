@@ -1,0 +1,14 @@
+<section>
+    <div>
+        <form>
+            <div>
+                <label> 身份验证码： </label>
+                <input type="text" placeholder="请输入身份验证码：" ng-model="querycode">
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <button ng-click="Query()" ng-disabled="!querycode">下一步</button>
+    </div>
+</section>

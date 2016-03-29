@@ -1,0 +1,44 @@
+<section>
+    <div ng-init="getProvince()">
+        <p>请选择查询类型：</p>
+        <p><input type="radio" ng-model="main_type" value="gjj" ng-change="change_maintype()"><span>公积金查询</span></p>
+        <p><input type="radio" ng-model="main_type" value="shebao" ng-change="change_maintype()"><span>社保查询</span></p>
+        <form id="select_form">
+            <div>
+                <label>城市列表(省)</label>
+                <select ng-model="select_province" ng-options="province.ProvinceName for province in provinces"
+                        ng-change="change_province()">
+                </select>
+                <input name="priovce" value="{{select_province.ProvinceCode}}" hidden>
+            </div>
+            <div>
+                <label>城市列表(市)</label>
+                <select ng-model="select_city" ng-options="city.CityName for city in citys"
+                        ng-change="change_city()">
+                </select>
+                <input name="city" value="{{select_city.CityCode}}" hidden>
+            </div>
+            <input name="Token" value="{{token}}" hidden>
+            <div ng-if="city_formsetting.length>0">
+                <div ng-repeat="type in city_formsetting">
+                    <p>
+                        <input type="radio" value="{{type}}" ng-checked="type==selected_type"
+                               ng-change="changetype(type)" ng-model="login" name="login_type">
+                        <span>{{type.Description}}</span>
+                    </p>
+                </div>
+                <input name="LoginType" value="{{selected_type.LoginType}}" hidden>
+                <div ng-if="selected_type">
+                <div ng-repeat="form in selected_type.FormParams" >
+                    <label>{{form.ParameterName}}</label>
+                    <input type="text" placeholder="{{form.ParameterMessage}}" name="{{form.ParameterCode}}">
+                </div>
+                <div ng-click="Init()"><img ng-src="{{vercodebase64}}"></div>
+                    </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <button ng-click="Query()">查询</button>
+    </div>
+</section>

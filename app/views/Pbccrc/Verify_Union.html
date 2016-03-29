@@ -1,0 +1,20 @@
+<section>
+    <div ng-init="getVerifyCode_Union('init')">
+        <form>
+            <div>
+                <label> 银联认证码 </label>
+                <input type="text" placeholder="请输入银联认证码" ng-model="PbccrcUnion.unionpaycode">
+                <button id="selecttype" ng-click="getUnionPayCode()" ng-disabled="!PbccrcUnion.vercodebase64">获取银联认证码</button>
+            </div>
+            <div>
+                <label> 验证码 </label>
+                <input type="text" placeholder="请输入验证码" ng-model="PbccrcUnion.vercode" ng-disabled="!PbccrcUnion.vercodebase64">
+                <div ng-click="getVerifyCode_Union('hand')"><img ng-src="{{PbccrcUnion.vercodebase64}}"></div>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <button ng-click="Submit_Union()" ng-disabled="!(PbccrcUnion.unionpaycode && PbccrcUnion.vercode)">下一步</button>
+    </div>
+</section>

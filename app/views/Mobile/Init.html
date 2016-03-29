@@ -1,0 +1,55 @@
+<section>
+    <div>
+            <form name='myForm'>
+            <div>
+                <label> 手机号 </label>
+                <input type="text" placeholder="请输入手机号" name='mobile' ng-model="MobileReq.Mobile" required />
+                <span style="color:red" ng-show="myForm.mobile.$dirty && myForm.mobile.$invalid">
+                <span ng-show="myForm.mobile.$error.required">手机号不能为空</span></span>
+            </div>
+
+            <div>
+                <label> 姓名 </label>
+                <input type="text" placeholder="请输入姓名" name="name" ng-model="MobileReq.Name" required/>
+                <span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+                <span ng-show="myForm.name.$error.required">姓名不能为空</span></span>
+            </div>
+            <div>
+                <label> 身份证 </label>
+                <input type="text" placeholder="请输入身份证" name="identityCard" ng-model="MobileReq.IdentityCard" required/>
+                <span style="color:red" ng-show="myForm.identityCard.$dirty && myForm.identityCard.$invalid">
+                <span ng-show="myForm.identityCard.$error.required">身份证不能为空</span></span>
+            </div>
+                <div ng-repeat="item in LoginList">
+                    <label>登录密码 </label>
+                    <input type="text" placeholder="请输入登录密码" name="Password" ng-model="item.Password" required/>
+                    <span style="color:red" ng-show="myForm.Password.$dirty && myForm.Password.$invalid">
+                    <span ng-show="myForm.Password.$error.required">登录密码不能为空</span></span>
+                </div>
+
+                <div ng-repeat="item in VerCodeList">
+                    <label>图片验证码 </label>
+                    <input type="text" placeholder="请输入图片验证码" name="Vercode" ng-model="item.Vercode" required/>
+                    <img ng-src="{{item.VerCodeBase64}}"/>
+                    <span style="color:red" ng-show="myForm.Vercode.$dirty && myForm.Vercode.$invalid">
+                    <span ng-show="myForm.Vercode.$error.required">图片验证码不能为空</span></span>
+                </div>
+                <div ng-repeat="item in SmsList">
+                    <label>短信动态验证码 </label>
+                    <input type="text" placeholder="请输入短信动态验证码" name="Smscode" ng-model="item.Smscode" required/>
+                    <span style="color:red" ng-show="myForm.Smscode.$dirty && myForm.Smscode.$invalid">
+                    <span ng-show="myForm.Smscode.$error.required">短信动态验证码不能为空</span></span>
+                </div>
+                <div ng-repeat="item in ServecodeList">
+                    <label>服务密码 </label>
+                    <input type="text" placeholder="请输入服务密码" name="Servecode" ng-model="item.Servecode" required/>
+                    <span style="color:red" ng-show="myForm.Servecode.$dirty && myForm.Servecode.$invalid">
+                    <span ng-show="myForm.Servecode.$error.required">服务密码不能为空</span></span>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <button ng-click="mobileinit()"   ng-disabled="myForm.$invalid">{{MobileReq.nextProText}}</button>
+        </div>
+</section>

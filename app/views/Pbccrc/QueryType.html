@@ -1,0 +1,12 @@
+<section>
+    <div>
+        <p>请选择认证类型：</p>
+        <p><input type="radio" ng-model="PbccrcUserInfo.type" value="1"><span>问题认证</span></p>
+        <p><input type="radio" ng-model="PbccrcUserInfo.type" value="2"><span>银联卡认证</span></p>
+        <p><input type="radio" ng-model="PbccrcUserInfo.type" value="3"><span>已有认证码，直接查询</span></p>
+    </div>
+
+    <div>
+        <button ng-click="SelectType()">进行认证</button>
+    </div>
+</section>

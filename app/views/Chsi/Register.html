@@ -1,0 +1,99 @@
+<section>
+    <div>
+        <form >
+            <div>
+                <label> 手机号 </label>
+                <input type="text" placeholder="请输入手机号" ng-model="ChsiRegInfo.mobile">
+            </div>
+
+            <div>
+                <label> 图片校验码 </label>
+                <input type="text" placeholder="请输入图片校验码" ng-model="ChsiRegInfo.vercode" ng-disabled="!ChsiRegInfo.vercodebase64">
+                <div ng-click="getMobileVerifyCode()" ng-if="ChsiRegInfo.vercodebase64"><img ng-src="{{ChsiRegInfo.vercodebase64}}"></div>
+                <button ng-click="getMobileVerifyCode()" ng-disabled="!ChsiRegInfo.mobile">获取图片验证码</button>
+            </div>
+
+            <div>
+                <label> 短信校验码 </label>
+                <input type="text" placeholder="请输入短信校验码" ng-model="ChsiRegInfo.smscode"
+                       ng-disabled="!(ChsiRegInfo.name && ChsiRegInfo.vercode)">
+                <button ng-click="getMobileSMSCode()" ng-disabled="!(ChsiRegInfo.mobile && ChsiRegInfo.vercode)">获取短信校验码</button>
+            </div>
+
+            <div>
+                <label> 密码 </label>
+                <input type="text" placeholder="请输入密码" ng-model="ChsiRegInfo.password">
+            </div>
+
+            <div>
+                <label> 密码确认 </label>
+                <input type="text" placeholder="请确认密码" ng-model="ChsiRegInfo.password1">
+            </div>
+
+            <div>
+                <label> 姓名 </label>
+                <input type="text" placeholder="请输入姓名" ng-model="ChsiRegInfo.name">
+            </div>
+
+            <div>
+                <label> 证件类型 </label>
+                <select ng-model="ChsiRegInfo.credentialtype">
+                    <option value="SFZ">居民身份证</option>
+                    <option value="SFZ_GAT">港澳台身份证</option>
+                    <option value="SFZ_HQ">华侨身份证(无身份证者可填护照号)</option>
+                    <option value="QIT">其他</option>
+                </select>
+            </div>
+
+            <div>
+                <label> 证件号码 </label>
+                <input type="text" placeholder="请输入证件号码" ng-model="ChsiRegInfo.identitycard">
+            </div>
+
+            <div>
+                <label> 安全邮箱 </label>
+                <input type="text" placeholder="请输入安全邮箱" ng-model="ChsiRegInfo.email">
+            </div>
+
+            <div>
+                <label> 密保问题1 </label>
+                <select ng-model="ChsiRegInfo.pwdreq1" ng-options="q.id as q.question for q in questions"/>
+            </div>
+
+            <div>
+                <label> 密保答案1 </label>
+                <input type="text" placeholder="请输入密保问题1的答案" ng-model="ChsiRegInfo.pwdanswer1">
+            </div>
+
+            <div>
+                <label> 密保问题2 </label>
+                <select ng-model="ChsiRegInfo.pwdreq2" ng-options="q.id as q.question for q in questions"/>
+            </div>
+
+            <div>
+                <label> 密保答案2 </label>
+                <input type="text" placeholder="请输入密保问题2的答案" ng-model="ChsiRegInfo.pwdanswer2">
+            </div>
+
+            <div>
+                <label> 密保问题3 </label>
+                <select ng-model="ChsiRegInfo.pwdreq3" ng-options="q.id as q.question for q in questions"/>
+            </div>
+
+            <div>
+                <label> 密保答案3 </label>
+                <input type="text" placeholder="请输入密保问题3的答案" ng-model="ChsiRegInfo.pwdanswer3">
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <button ng-click="register()"
+                ng-disabled="!(ChsiRegInfo.mobile && ChsiRegInfo.vercode && ChsiRegInfo.smscode && ChsiRegInfo.password &&
+                 (ChsiRegInfo.password == ChsiRegInfo.password1) && ChsiRegInfo.name && ChsiRegInfo.identitycard &&
+                 ChsiRegInfo.email && ChsiRegInfo.pwdreq1 && ChsiRegInfo.pwdanswer1 && ChsiRegInfo.pwdreq2 &&
+                 ChsiRegInfo.pwdanswer2 && ChsiRegInfo.pwdreq3 && ChsiRegInfo.pwdanswer3)">
+            提交
+        </button>
+    </div>
+</section>

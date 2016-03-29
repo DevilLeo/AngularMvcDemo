@@ -1,0 +1,14 @@
+<section>
+    <div>
+        <form>
+            <div>
+                <label> 银联卡号 </label>
+                <input type="text" placeholder="借记卡/贷记卡" ng-model="UnionPayInfo.creditcardno">
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <button ng-click="CheckCard()" ng-disabled="!UnionPayInfo.creditcardno">下一步</button>
+    </div>
+</section>
